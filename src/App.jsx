@@ -1,8 +1,8 @@
-import { Routes, Route, Link } from "react-router-dom";
+import { Routes, Route, NavLink } from "react-router-dom";
 import Header from "./components/Header/header"
 import Home from "./pages/Home/home";  
 import About from "./pages/About/about";
-//import Footer from "./components/Footer/footer"
+import Footer from "./components/Footer/footer"
 
 export default function App() {
   return (
@@ -13,8 +13,9 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-
       </Routes>
+
+      <Footer />   {/* This shows the footer on every page */}
     </div>
 
   );

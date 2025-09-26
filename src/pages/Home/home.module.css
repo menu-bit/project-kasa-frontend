@@ -1,0 +1,50 @@
+
+.topSection {
+  position: relative;
+  display: inline-block; /* pour que la taille corresponde à l'image */
+  margin-left: 80px;
+  margin-bottom: 80px;
+  margin-top: 80px;
+  margin-right: 0px;
+  width: 1240px;
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25); 
+  border-radius: 25px;
+}
+
+.topSection img {
+  display: block;
+  height: auto;
+  opacity: 60%;
+  border-radius: 25px;
+  filter: brightness(35%);
+  width: 1240px;
+}
+
+.overlayText {
+  position: absolute;
+  top: 50%;           /* centrer verticalement */
+  left: 50%;          /* centrer horizontalement */
+  transform: translate(-50%, -50%); /* ajuster le centrage */
+  color: white;
+  font-size: 40px;
+  font-weight: 700;
+
+}
+
+/* Cards Section to overlay multiple cards*/
+.cardsSection {
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: rgba(246, 246, 246, 1);
+  width: 1240px;
+  margin-left: 80px;
+  margin-bottom: 80px;
+}
+
+.cardsWrapper {
+  display: grid;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+}

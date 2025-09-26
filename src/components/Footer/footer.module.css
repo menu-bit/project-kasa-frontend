@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: black;
+    color: white;
+    font-weight: 500;
+    size: 24px;
+    width: 1440px;
+    height:209px
+}
+
+.logo{
+    margin-top:66px;
+    margin-bottom:30px;
+}
+
+/*.circle {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background: black;
+    border: 1px solid lightgray;
+    color: white;
+    text-align: center;
+    margin-right:10px;
+}*/
+
+.copyright {
+    display: flex;
+    padding-bottom: 20px;
+    align-items: center;
+}

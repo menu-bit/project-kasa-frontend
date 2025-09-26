@@ -1,0 +1,27 @@
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 340px;
+  height: 340px;
+  color: white;
+  background-color: rgb(214, 63, 63);
+  border-radius: 10px;
+  margin-left: 50px;
+  text-align: center;
+}
+
+.card img {
+  border-radius: 8px;
+}
+
+.card h2 {
+  margin: 0 0 5px;
+  font-size: 1.2rem;
+}
+
+.card p {
+  margin: 0;
+  font-size: 1rem;
+}

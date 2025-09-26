@@ -1,12 +1,12 @@
 import Card from "../../components/Card/card";
 import styles from "./home.module.css"
-import card1 from "../../assets/card1.png"
+import bannerImg from "../../assets/bannerImg.png"
 
 export default function Home() {
   return (
     <main>
-    <section className={styles.topSection}>
-    <img src={card1} alt="card1"  className={styles.topSectionimg}/>
+    <section className={styles.banner}>
+    <img src={bannerImg} alt="bannerImg" />
     <div className={styles.overlayText}>
     Chez vous, partout et ailleurs
   </div>

@@ -1,5 +1,5 @@
 
-.topSection {
+.banner {
   position: relative;
   display: inline-block; /* pour que la taille corresponde à l'image */
   margin-left: 80px;
@@ -11,12 +11,13 @@
   border-radius: 25px;
 }
 
-.topSection img {
+.banner img {
   display: block;
   height: auto;
   opacity: 60%;
   border-radius: 25px;
-  filter: brightness(35%);
+  filter: opacity(60%);
+  mix-blend-mode: darken;
   width: 1240px;
 }
 

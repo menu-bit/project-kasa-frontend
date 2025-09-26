@@ -1,26 +1,33 @@
-import Card from "../../components/Card/card";
-import styles from "./home.module.css"
-import bannerImg from "../../assets/bannerImg.png"
+import Card from '../../components/Card/card'
+import styles from './home.module.css'
+//import bannerImg from "../../assets/bannerImg.png"
+import { Banner } from '../../components/Banner/banner'
+import React, { useEffect, useState } from 'react'
 
 export default function Home() {
+  const [accomodations, setAccomodations] = useState([])
+
+  useEffect(() => {
+    fetch('http://localhost:8080/api/properties')
+      .then((reponse) => reponse.json())
+      .then((data) => setAccomodations(data))
+  }, [])
+
   return (
     <main>
-    <section className={styles.banner}>
-    <img src={bannerImg} alt="bannerImg" />
-    <div className={styles.overlayText}>
-    Chez vous, partout et ailleurs
-  </div>
-  </section>
-
-  <section className={styles.cardsSection}>
-         <div className={styles.cardWrapper}>
-        <Card
-        image="your-image-url.jpg"
-        title="Card Title"
-        description="Card description goes here."
-      />
-      </div>
-    </section>
+      <Banner />
+      <section className={styles.cardsSection}>
+        <div className={styles.cardsWrapper}>
+          {accomodations.map((accomodation) => (
+            <Card
+              key={accomodation.id}
+              image={accomodation.image}
+              title={accomodation.title}
+              description={accomodation.description}
+            />
+          ))}
+        </div>
+      </section>
     </main>
-  );
+  )
 }

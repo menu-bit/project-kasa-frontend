@@ -1,17 +1,19 @@
-
 .card {
-  display: flex;
-  flex-direction: column;
   padding: 15px;
   width: 340px;
   height: 340px;
   color: white;
   background-color: rgb(214, 63, 63);
   border-radius: 10px;
-  margin-left: 50px;
+  margin: 10px;
   text-align: center;
+  display: flex; /* use flexbox inside the card */
+  flex-direction: column;
+  justify-content: center; /* center content vertically */
+  align-items: center; /* center content horizontally */
+  cursor: pointer;
 }
-
+/*
 .card img {
   border-radius: 8px;
 }
@@ -25,3 +27,4 @@
   margin: 0;
   font-size: 1rem;
 }
+  */

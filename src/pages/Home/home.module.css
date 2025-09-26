@@ -1,37 +1,3 @@
-
-.banner {
-  position: relative;
-  display: inline-block; /* pour que la taille corresponde à l'image */
-  margin-left: 80px;
-  margin-bottom: 80px;
-  margin-top: 80px;
-  margin-right: 0px;
-  width: 1240px;
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25); 
-  border-radius: 25px;
-}
-
-.banner img {
-  display: block;
-  height: auto;
-  opacity: 60%;
-  border-radius: 25px;
-  filter: opacity(60%);
-  mix-blend-mode: darken;
-  width: 1240px;
-}
-
-.overlayText {
-  position: absolute;
-  top: 50%;           /* centrer verticalement */
-  left: 50%;          /* centrer horizontalement */
-  transform: translate(-50%, -50%); /* ajuster le centrage */
-  color: white;
-  font-size: 40px;
-  font-weight: 700;
-
-}
-
 /* Cards Section to overlay multiple cards*/
 .cardsSection {
   padding-left: 0px;
@@ -40,12 +6,17 @@
   width: 1240px;
   margin-left: 80px;
   margin-bottom: 80px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-right: 20px;
+  padding-left: 20px;
+  border-radius: 25px;
 }
 
 .cardsWrapper {
   display: grid;
-  gap: 2rem;
-  flex-wrap: wrap;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
   justify-content: center;
-
+  border-top: 20px;
 }

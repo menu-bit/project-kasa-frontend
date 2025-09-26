@@ -1,9 +1,8 @@
-
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-padding-top: 32px;
+  padding-top: 32px;
   background-color: #fff;
   width: 1240px;
   height: 68px;
@@ -11,16 +10,13 @@ padding-top: 32px;
 }
 
 .nav a {
-margin-left: 50px;
+  margin-left: 50px;
   text-decoration: none;
-  color: rgba(0,0,0,1);
+  color: rgba(0, 0, 0, 1);
   font-size: 24px;
   font-weight: 500;
 }
 
 .active {
-  border-bottom: 1px solid rgba(0,0,0,1);
+  border-bottom: 1px solid rgba(0, 0, 0, 1);
 }
-
-
-

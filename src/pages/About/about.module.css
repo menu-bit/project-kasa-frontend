@@ -1,3 +1,20 @@
-.h1 {
+.collapseTitle {
+  margin-left: 200px;
+  height: 52px;
+  width: 1023px;
+  background: rgba(255, 96, 96, 1);
+  color: rgba(255, 255, 255, 1);
+}
+
+.FaChevronDown {
   color: red;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 100px;
+}
+
+p {
+  background: white;
+  color: black;
+  height: fit-content;
 }

@@ -6,11 +6,15 @@
   width: 1023px;
   height: 54px;
   margin-left: 200px;
+  margin-bottom: 30px;
 }
 
 .collapseHeader {
   padding: 10px;
   color: rgba(255, 255, 255, 1);
+  font-size: 24px;
+  font-weight: 700;
+  cursor: pointer;
 }
 .icon {
   float: right;
@@ -27,6 +31,7 @@
   background: #fafafa;
   color: black;
   transition: max-height 0.3s ease;
+  margin-top: 15px;
 }
 
 .collapseContent.open {
@@ -34,5 +39,9 @@
 }
 
 .innerContent {
-  margin-top: 8px;
+  background-color: azure;
+  margin-top: 18px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 5px;
 }

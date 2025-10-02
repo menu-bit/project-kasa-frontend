@@ -1,7 +1,7 @@
 import styles from './collapse.module.css'
 import React, { useState } from 'react'
 import { CCollapse } from '@coreui/react'
-import { FaChevronDown } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 
 export default function Collapse() {
   const [fiabiliteVisible, setFiabiliteVisible] = useState(false)
@@ -41,12 +41,12 @@ export default function Collapse() {
   ]
 
   return (
-    <div>
+    <>
       {collapsibles.map(({ title, visible, setVisible, content }) => (
         <div key={title} className={styles.collapseSection}>
           <div className={styles.collapseHeader}>
             {title}
-            <FaChevronDown
+            <FaChevronUp
               onClick={() => setVisible((v) => !v)}
               className={`${styles.icon} ${visible ? styles.iconOpen : ''}`}
             />
@@ -60,6 +60,6 @@ export default function Collapse() {
           </div>
         </div>
       ))}
-    </div>
+    </>
   )
 }

@@ -1,3 +1,4 @@
+import React from 'react'
 import { Banner } from '../../components/Banner/bannerAbout'
 //import bannerAboutImg from '../../assets/bannerAboutImg.png'
 //import styles from './about.module.css'

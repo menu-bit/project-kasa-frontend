@@ -16,6 +16,7 @@ export default function Home() {
     fetch('http://localhost:8080/api/properties') //fetches data
       .then((reponse) => reponse.json()) //Converts the response to JSON
       .then((data) => setAccomodations(data)) //Updates state with the data → re-renders component with accommodations filled in
+      .catch((error) => console.log(error))
   }, []) //([] dependency array ensures it runs only once)
 
   return (
@@ -25,8 +26,8 @@ export default function Home() {
         <div className={styles.cardsWrapper}>
           {accomodations.map((accomodation) => (
             <Card
-              //key={accomodation.id}
-              //image={accomodation.image}
+              key={accomodation.id}
+              image={accomodation.image}
               title={accomodation.title}
               //description={accomodation.description}
             />

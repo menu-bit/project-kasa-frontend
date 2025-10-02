@@ -1,0 +1,38 @@
+.collapseSection {
+  margin-bottom: 20px;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 96, 96, 1);
+  border-radius: 5px;
+  width: 1023px;
+  height: 54px;
+  margin-left: 200px;
+}
+
+.collapseHeader {
+  padding: 10px;
+  color: rgba(255, 255, 255, 1);
+}
+.icon {
+  float: right;
+  transition: transform 0.3s ease;
+}
+
+.iconOpen {
+  transform: rotate(180deg);
+}
+
+.collapseContent {
+  max-height: 0;
+  overflow: hidden;
+  background: #fafafa;
+  color: black;
+  transition: max-height 0.3s ease;
+}
+
+.collapseContent.open {
+  max-height: 500px; /* adjust based on expected content size */
+}
+
+.innerContent {
+  margin-top: 8px;
+}

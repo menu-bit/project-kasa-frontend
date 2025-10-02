@@ -4,19 +4,20 @@
   padding-right: 0px;
   background-color: rgba(246, 246, 246, 1);
   width: 1240px;
-  margin-left: 80px;
+  margin-left: 100px;
+  margin-right: 100px;
   margin-bottom: 80px;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-right: 20px;
-  padding-left: 20px;
   border-radius: 25px;
 }
 
 .cardsWrapper {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1rem 0rem;
   justify-content: center;
   border-top: 20px;
+  margin-left: 20px;
+  margin-right: 15px;
 }

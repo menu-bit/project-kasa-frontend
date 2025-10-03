@@ -1,8 +1,4 @@
-import React from 'react'
 import { Banner } from '../../components/Banner/bannerAbout'
-
-import { CCollapse } from '@coreui/react'
-import { FaChevronDown } from 'react-icons/fa'
 import Collapse from '../../components/Collapse/collapse'
 
 export default function About() {
@@ -31,7 +27,14 @@ export default function About() {
   return (
     <main>
       <Banner />
-
+      {collapsibles.map((item, index) => (
+        <Collapse key={index} title={item.title} content={item.content} />
+      ))}
+    </main>
+  )
+}
+{
+  /*
       <Collapse
         title={collapsibles[0].title}
         content={collapsibles[0].content}
@@ -50,4 +53,5 @@ export default function About() {
       />
     </main>
   )
+}*/
 }

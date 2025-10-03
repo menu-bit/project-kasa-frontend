@@ -1,41 +1,44 @@
 .collapseSection {
-  margin-bottom: 20px;
   color: rgba(255, 255, 255, 1);
   background: rgba(255, 96, 96, 1);
+  margin-bottom: 12px;
   border-radius: 5px;
+  overflow: hidden;
   width: 1023px;
-  height: 54px;
   margin-left: 200px;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
 }
 
 .collapseHeader {
-  padding: 10px;
-  color: rgba(255, 255, 255, 1);
-  font-size: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f15b5b; /* red */
+  color: white;
+  padding: 12px 12px;
   font-weight: 700;
+  font-size: 24px;
   cursor: pointer;
 }
+
 .icon {
-  float: right;
   transition: transform 0.3s ease;
 }
 
 .iconOpen {
-  transform: rotate(180deg);
+  transform: rotate(-180deg);
 }
 
 .collapseContent {
   max-height: 0;
   overflow: hidden;
+  transition: max-height 0.4s ease;
   background: #fafafa;
   color: black;
-  transition: max-height 0.3s ease;
-  margin-top: 15px;
 }
 
 .collapseContent.open {
-  max-height: 500px; /* adjust based on expected content size */
+  max-height: 500px; /* big enough to fit your text */
 }
 
 .innerContent {

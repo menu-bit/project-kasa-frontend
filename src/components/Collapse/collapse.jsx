@@ -1,24 +1,23 @@
 import { useState } from 'react'
-import { FaChevronUp } from 'react-icons/fa'
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
 import styles from './collapse.module.css'
 
 export default function Collapse({ title, content }) {
-  const [visible, setVisible] = useState(false) // <-- add this
+  const [open, setOpen] = useState(false)
 
   return (
     <div className={styles.collapseSection}>
       <div
         className={styles.collapseHeader}
-        onClick={() => setVisible((v) => !v)}
+        onClick={() => setOpen((prev) => !prev)}
       >
-        {title}
+        <span>{title}</span>
         <FaChevronUp
-          className={`${styles.icon} ${visible ? styles.iconOpen : ''}`}
+          className={`${styles.icon} ${open ? styles.iconOpen : ''}`}
         />
       </div>
-      <div
-        className={`${styles.collapseContent} ${visible ? styles.open : ''}`}
-      >
+
+      <div className={`${styles.collapseContent} ${open ? styles.open : ''}`}>
         <div className={styles.innerContent}>{content}</div>
       </div>
     </div>

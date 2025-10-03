@@ -2,8 +2,8 @@
   position: relative;
   display: inline-block; /* pour que la taille corresponde à l'image */
   margin-left: 100px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 40px;
+  margin-top: 40px;
   margin-right: 0px;
   width: 1240px;
   box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);

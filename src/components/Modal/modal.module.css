@@ -1,0 +1,25 @@
+.modal {
+  top: 0;
+  left: 0;
+  position: fixed;
+  max-width: 1440px;
+  height: 1065px;
+  background-color: #ffff;
+  margin-left: 200px;
+}
+
+.pictures {
+}
+.title {
+  color: rgba(255, 96, 96, 1);
+  margin-left: 100px;
+}
+
+.subTitle {
+  margin-left: 100px;
+}
+
+.description {
+  margin-left: 100px;
+  margin-right: 100px;
+}

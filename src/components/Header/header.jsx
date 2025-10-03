@@ -1,8 +1,9 @@
-import { NavLink } from "react-router-dom";
-import logo from "../../assets/logo.png"
-import styles from "./header.module.css";
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import logo from '../../assets/logo.png'
+import styles from './header.module.css'
 
-export default function Header() {
+export default function Header({ onNavigate }) {
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -11,19 +12,22 @@ export default function Header() {
       <nav className={styles.nav}>
         <NavLink
           to="/"
+          onClick={onNavigate}
           className={({ isActive }) =>
             isActive ? `${styles.active}` : undefined
           }
         >
-        Accueil</NavLink>
+          Accueil
+        </NavLink>
         <NavLink
           to="/about"
           className={({ isActive }) =>
             isActive ? `${styles.active}` : undefined
           }
         >
-        A Propos</NavLink>
+          A Propos
+        </NavLink>
       </nav>
     </header>
-  );
+  )
 }

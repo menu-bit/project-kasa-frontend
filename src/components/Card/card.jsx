@@ -1,14 +1,27 @@
 import React from 'react'
 import styles from './card.module.css'
+import { useState } from 'react'
+import Modal from '../Modal/modal'
 
-export default function Card({ image, title, description }) {
+export default function Card({ pictures, title, location, description }) {
+  const [showModal, setShowModal] = useState(false)
+
   return (
-    <article className={styles.card}>
-      {/*img src={image} alt={title} className={styles.cardImage} />µ*/}
-      <div className={styles.cardContent}>
+    <>
+      <div className={styles.card} onClick={() => setShowModal(true)}>
         <h3 className={styles.cardTitle}>{title}</h3>
-        <p className={styles.cardDescription}>{description}</p>
+        {/* <p className={styles.cardDescription}>{description}</p> */}
       </div>
-    </article>
+
+      {showModal && (
+        <Modal
+          pictures={pictures} // pass image if needed
+          title={title} // pass title
+          location={location}
+          description={description} // pass description
+          onClose={() => setShowModal(false)}
+        />
+      )}
+    </>
   )
 }

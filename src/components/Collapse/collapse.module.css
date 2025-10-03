@@ -39,7 +39,7 @@
 }
 
 .innerContent {
-  background-color: azure;
+  background-color: rgba(246, 246, 246, 1);
   margin-top: 18px;
   font-size: 18px;
   font-weight: 500;

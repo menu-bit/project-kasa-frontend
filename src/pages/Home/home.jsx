@@ -1,4 +1,5 @@
 import Card from '../../components/Card/card'
+import Modal from '../../components/Modal/modal'
 import styles from './home.module.css'
 //import bannerImg from "../../assets/bannerImg.png"
 import { Banner } from '../../components/Banner/banner'
@@ -27,9 +28,10 @@ export default function Home() {
           {accomodations.map((accomodation) => (
             <Card
               key={accomodation.id}
-              image={accomodation.image}
+              pictures={accomodation.pictures}
               title={accomodation.title}
-              //description={accomodation.description}
+              location={accomodation.location}
+              description={accomodation.description}
             />
           ))}
         </div>

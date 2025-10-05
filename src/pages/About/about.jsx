@@ -1,4 +1,5 @@
-import { Banner } from '../../components/Banner/bannerAbout'
+import bannerAbout from '../../assets/bannerAboutImg.png'
+import { Banner } from '../../components/Banner/banner'
 import Collapse from '../../components/Collapse/collapse'
 
 export default function About() {
@@ -26,7 +27,7 @@ export default function About() {
   ]
   return (
     <main>
-      <Banner />
+      <Banner imageSrc={bannerAbout} variant="about" />
       {collapsibles.map((item, index) => (
         <Collapse key={index} title={item.title} content={item.content} />
       ))}

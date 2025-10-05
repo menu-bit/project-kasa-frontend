@@ -1,23 +1,24 @@
-.banner {
+.bannerHome {
   position: relative;
-  display: inline-block; /* pour que la taille corresponde à l'image */
   margin-left: 100px;
   margin-bottom: 40px;
   margin-top: 40px;
   margin-right: 0px;
   width: 1240px;
-  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.25);
+  height: 223px;
   border-radius: 25px;
+  border: rgba(0, 0, 0, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 }
 
-.banner img {
-  display: block;
-  height: auto;
-  opacity: 60%;
-  border-radius: 25px;
-  filter: opacity(60%);
-  mix-blend-mode: darken;
+.bannerAbout {
+  margin-left: 100px;
+  margin-bottom: 40px;
+  margin-top: 40px;
+  margin-right: 0px;
   width: 1240px;
+  border-radius: 25px;
 }
 
 .overlayText {
@@ -28,4 +29,7 @@
   color: white;
   font-size: 40px;
   font-weight: 700;
+}
+.bannerHome img {
+  filter: brightness(0.5);
 }

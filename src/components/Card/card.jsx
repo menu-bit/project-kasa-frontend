@@ -1,7 +1,6 @@
-import React from 'react'
-import styles from './card.module.css'
 import { useState } from 'react'
 import Modal from '../Modal/modal'
+import styles from './card.module.css'
 
 export default function Card({ pictures, title, location, description }) {
   const [showModal, setShowModal] = useState(false)

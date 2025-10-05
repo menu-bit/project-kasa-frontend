@@ -3,19 +3,52 @@
   left: 0;
   position: fixed;
   max-width: 1440px;
-  height: 1065px;
   background-color: #ffff;
-  margin-left: 200px;
+  margin-left: 232.5px;
 }
 
-.pictures {
+.modalBody img {
+  width: 100%;
+  height: 415px;
+  object-fit: cover;
+  border-radius: 25px;
+  margin-bottom: 30px;
 }
+
+.arrowLeft {
+  position: absolute;
+  transform: translate(0%, 200%); /* ajuster le centrage */
+  color: rgb(255, 255, 255, 1);
+  width: 47px;
+  height: 79px;
+  margin-left: 25px;
+  position: absolute;
+}
+
+.arrowRight {
+  position: absolute;
+  transform: translate(-150%, 200%); /* ajuster le centrage */
+  color: rgb(255, 255, 255, 1);
+  width: 47px;
+  height: 79px;
+  margin-right: 100px;
+}
+
+.modalBody {
+  margin: 40px 100px 40px 100px;
+}
+
 .title {
+  font-weight: 500;
+  font-size: 36px;
   color: rgba(255, 96, 96, 1);
   margin-left: 100px;
 }
 
 .subTitle {
+  font-weight: 500;
+  font-size: 18px;
+  margin-left: 100px;
   margin-left: 100px;
 }
 

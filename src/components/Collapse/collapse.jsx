@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa'
+import { FaChevronUp } from 'react-icons/fa'
 import styles from './collapse.module.css'
 
 export default function Collapse({ title, content }) {

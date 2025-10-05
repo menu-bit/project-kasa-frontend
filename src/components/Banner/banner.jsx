@@ -1,11 +1,13 @@
 import styles from './banner.module.css'
-import bannerImg from '../../assets/bannerImg.png'
 
-export function Banner() {
+export function Banner({ imageSrc, text, variant }) {
+  const bannerClassName =
+    variant === 'about' ? styles.bannerAbout : styles.bannerHome
+
   return (
-    <section className={styles.banner}>
-      <img src={bannerImg} alt="bannerImg" />
-      <div className={styles.overlayText}>Chez vous, partout et ailleurs</div>
+    <section className={bannerClassName}>
+      <img src={imageSrc} alt="banner" />
+      <div className={styles.overlayText}>{text}</div>
     </section>
   )
 }

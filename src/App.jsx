@@ -1,10 +1,9 @@
-import React from 'react'
-import { Routes, Route, NavLink } from 'react-router-dom'
-import Header from './components/Header/header'
-import Home from './pages/Home/home'
-import About from './pages/About/about'
-import Footer from './components/Footer/footer'
+import { Route, Routes } from 'react-router-dom'
 import Error from './components/Error/error'
+import Footer from './components/Footer/footer'
+import Header from './components/Header/header'
+import About from './pages/About/about'
+import Home from './pages/Home/home'
 
 export default function App() {
   return (

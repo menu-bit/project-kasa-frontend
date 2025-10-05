@@ -31,10 +31,14 @@ export default function Home() {
           {accomodations.map((accomodation) => (
             <Card
               key={accomodation.id}
-              pictures={accomodation.pictures}
               title={accomodation.title}
-              location={accomodation.location}
+              cover={accomodation.cover}
+              pictures={accomodation.pictures}
               description={accomodation.description}
+              rating={accomodation.rating}
+              location={accomodation.location}
+              equipments={accomodation.equipments}
+              tags={accomodation.tags}
             />
           ))}
         </div>

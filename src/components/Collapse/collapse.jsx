@@ -2,11 +2,11 @@ import { useState } from 'react'
 import { FaChevronUp } from 'react-icons/fa'
 import styles from './collapse.module.css'
 
-export default function Collapse({ title, content }) {
+export default function Collapse({ title, content, className }) {
   const [open, setOpen] = useState(false)
 
   return (
-    <div className={styles.collapseSection}>
+    <div className={`${styles.collapseSection} ${className || ''}`}>
       <div
         className={styles.collapseHeader}
         onClick={() => setOpen((prev) => !prev)}

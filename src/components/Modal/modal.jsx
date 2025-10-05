@@ -3,6 +3,7 @@ import Header from '../Header/header'
 import Footer from '../Footer/footer'
 import styles from './modal.module.css'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
+import Collapse from '../Collapse/collapse'
 
 export default function Modal({
   onClose,
@@ -10,6 +11,7 @@ export default function Modal({
   title,
   location,
   description,
+  equipments,
 }) {
   const [currentIndex, setCurrentIndex] = useState(0)
 
@@ -35,7 +37,19 @@ export default function Modal({
         </FaChevronRight>
         <div className={styles.title}>{title}</div>
         <div className={styles.subTitle}>{location}</div>
-        <p className={styles.description}>{description}</p>
+        <div>
+          <Collapse
+            title="Description"
+            content={description}
+            className={styles.description}
+          />
+          <Collapse
+            title="Équipement"
+            content={equipments}
+            className={styles.equipments}
+          />
+        </div>
+        {/*<p className={styles.description}>{description}</p>*/}
       </div>
       <Footer />
     </div>

@@ -9,7 +9,12 @@ export default function Modal({
   onClose,
   pictures,
   title,
+  cover,
   location,
+  host,
+  picture,
+  tags,
+  rating,
   description,
   equipments,
 }) {
@@ -47,17 +52,15 @@ export default function Modal({
 
         <div className={styles.title}>{title}</div>
         <div className={styles.subTitle}>{location}</div>
-        <div>
-          <Collapse
-            title="Description"
-            content={description}
-            className={styles.description}
-          />
-          <Collapse
-            title="Équipement"
-            content={equipments}
-            className={styles.equipments}
-          />
+        {/*<div className={styles.host}>{host}</div>*/}
+        <div className={styles.hostPhoto}>{picture}</div>
+        <div className={styles.tags}>{tags}</div>
+        <div className={styles.ratings}>{rating}</div>
+        {/*<div className={styles.cover}>{cover}</div>*/}
+
+        <div className={styles.collapseRow}>
+          <Collapse title="Description" content={description} variant="modal" />
+          <Collapse title="Équipement" content={equipments} variant="modal" />
         </div>
         {/*<p className={styles.description}>{description}</p>*/}
       </div>

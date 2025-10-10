@@ -1,4 +1,7 @@
 .collapseSection {
+}
+
+.defaultVariant {
   color: rgba(255, 255, 255, 1);
   background: rgba(255, 96, 96, 1);
   margin-bottom: 12px;
@@ -6,6 +9,17 @@
   overflow: hidden;
   width: 1023px;
   margin-left: 200px;
+  margin-bottom: 35px;
+}
+
+.modalVariant {
+  margin-left: 0px;
+  color: rgba(255, 255, 255, 1);
+  background: rgba(255, 96, 96, 1);
+  margin-bottom: 12px;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 1023px;
   margin-bottom: 35px;
 }
 
@@ -17,7 +31,6 @@
   padding: 12px 12px;
   font-weight: 700;
   font-size: 24px;
-  cursor: pointer;
 }
 
 .icon {

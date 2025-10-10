@@ -35,8 +35,10 @@ export default function Home() {
               cover={accomodation.cover}
               pictures={accomodation.pictures}
               description={accomodation.description}
-              rating={accomodation.rating}
               location={accomodation.location}
+              host={accomodation.host}
+              picture={accomodation.picture}
+              rating={accomodation.rating}
               equipments={accomodation.equipments}
               tags={accomodation.tags}
             />

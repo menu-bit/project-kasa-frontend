@@ -42,7 +42,7 @@
 
 .pictureCounter {
   position: absolute;
-  top: 55%; /* centrer verticalement */
+  top: 50%; /* centrer verticalement */
   left: 50%; /* centrer horizontalement */
   transform: translate(-50%, -50%); /* ajuster le centrage */
   color: white;
@@ -63,5 +63,21 @@
   margin-bottom: 30px;
 }
 
-.description {
+.hostImage {
+  height: 10px;
+  width: 10px;
+}
+
+.accomodationDetail {
+  margin-left: 0px;
+  width: 1240px;
+}
+
+.collapseRow {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 76px;
+  margin-top: 20px;
 }

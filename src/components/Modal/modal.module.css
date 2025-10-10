@@ -7,6 +7,11 @@
   margin-left: 232.5px;
 }
 
+.modalBody {
+  position: relative;
+  margin: 40px 100px;
+}
+
 .modalBody img {
   width: 100%;
   height: 415px;
@@ -17,12 +22,12 @@
 
 .arrowLeft {
   position: absolute;
-  transform: translate(0%, 200%); /* ajuster le centrage */
+  transform: translate(-2800%, 200%); /* ajuster le centrage */
   color: rgb(255, 255, 255, 1);
   width: 47px;
   height: 79px;
-  margin-left: 25px;
-  position: absolute;
+  margin-left: 100px;
+  z-index: 10;
 }
 
 .arrowRight {
@@ -32,10 +37,18 @@
   width: 47px;
   height: 79px;
   margin-right: 100px;
+  z-index: 10;
 }
 
-.modalBody {
-  margin: 40px 100px 40px 100px;
+.pictureCounter {
+  position: absolute;
+  top: 55%; /* centrer verticalement */
+  left: 50%; /* centrer horizontalement */
+  transform: translate(-50%, -50%); /* ajuster le centrage */
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 50;
 }
 
 .title {

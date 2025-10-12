@@ -1,18 +1,21 @@
 .footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: black;
-    color: white;
-    font-weight: 500;
-    size: 24px;
-    width: 1440px;
-    height:209px
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  color: white;
+  font-weight: 500;
+  font-size: 1.2rem;
+  width: 100%;
+  min-height: 200px;
+  padding: 40px 20px;
+  text-align: center;
 }
 
-.logo{
-    margin-top:66px;
-    margin-bottom:30px;
+.logo {
+  margin-top: 66px;
+  margin-bottom: 30px;
 }
 
 /*.circle {
@@ -27,7 +30,7 @@
 }*/
 
 .copyright {
-    display: flex;
-    padding-bottom: 20px;
-    align-items: center;
+  display: flex;
+  padding-bottom: 20px;
+  align-items: center;
 }

@@ -30,7 +30,7 @@ export default function Home() {
         <div className={styles.cardsWrapper}>
           {accomodations.map((accomodation) => (
             <Card
-              key={accomodation.id}
+              id={accomodation.id}
               title={accomodation.title}
               cover={accomodation.cover}
               pictures={accomodation.pictures}

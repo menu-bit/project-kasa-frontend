@@ -2,15 +2,13 @@ import { useState } from 'react'
 import { FaChevronUp } from 'react-icons/fa'
 import styles from './collapse.module.css'
 
-export default function Collapse({ title, content, variant = 'default' }) {
+export default function Collapse({ title, content, variant }) {
   const [open, setOpen] = useState(false)
+  const collapseClassName =
+    variant === 'detail' ? styles.detailVariant : styles.aboutVariant
 
   return (
-    <div
-      className={`${styles.collapseSection} ${
-        variant === 'modal' ? styles.modalVariant : styles.defaultVariant
-      }`}
-    >
+    <div className={collapseClassName}>
       <div className={styles.collapseHeader}>
         <span>{title}</span>
 

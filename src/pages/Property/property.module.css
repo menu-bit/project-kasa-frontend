@@ -1,0 +1,170 @@
+.property {
+  margin-left: 0px;
+  max-width: 1440px;
+  background-color: #ffff;
+  height: auto;
+}
+.propertySlide {
+  margin: 40px 100px;
+  height: 415px;
+}
+
+.propertySlide img {
+  width: 100%;
+  height: 415px;
+  object-fit: cover;
+  border-radius: 25px;
+}
+
+.arrowLeft {
+  position: relative;
+  transform: translate(-50%, -330%);
+  /*transform: translateY(-50%);ajuster le centrage */
+  color: rgb(255, 255, 255, 1);
+  width: 47px;
+  height: 79px;
+  margin-left: 50px;
+  z-index: 10;
+}
+
+.arrowRight {
+  position: relative;
+  transform: translate(2270%, -330%);
+  color: rgb(255, 255, 255, 1);
+  width: 47px;
+  height: 79px;
+  margin-right: 50px;
+  z-index: 10;
+}
+
+.pictureCounter {
+  position: absolute;
+  top: 55%; /* centrer verticalement */
+  left: 50%; /* centrer horizontalement */
+  transform: translate(-50%, -50%); /* ajuster le centrage */
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  z-index: 50;
+  /*background: rgba(0, 0, 0, 0.5);*/
+}
+
+.propertyDetail {
+  margin: 40px 100px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.title {
+  font-weight: 500;
+  font-size: 36px;
+  color: rgba(255, 96, 96, 1);
+}
+
+.location {
+  font-weight: 500;
+  font-size: 18px;
+  color: black;
+}
+
+.hostContainer {
+  display: flex;
+  justify-content: flex-end; /* espace entre le nom et la photo */
+  align-items: center; /* aligne verticalement au centre */
+}
+
+.hostName {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  color: rgba(255, 96, 96, 1);
+  font-weight: 500px;
+  font-size: 18px;
+  width: 93px;
+  margin-right: 10px;
+}
+
+.hostPicture img {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%; /* pour une photo ronde */
+  object-fit: cover;
+}
+
+.RateTagContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tagsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.tags {
+  display: flex;
+  gap: 10px;
+}
+
+.tag {
+  background-color: #ff6060;
+  color: white;
+  border-radius: 10px;
+  padding: 3px 30px;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.ratingContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.rating {
+}
+
+.filled {
+  color: rgba(255, 96, 96, 1);
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+
+.empty {
+  color: #e3e3e3; /* gray for empty stars */
+  font-size: 1.5rem;
+  margin-right: 8px;
+}
+.collapseRow {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 76px;
+  margin-top: 20px;
+}
+
+.collapseEquipment {
+  display: flex;
+  flex-direction: column;
+}
+
+.equipmentColumn {
+  display: flex;
+  flex-direction: column; /* stack vertically */
+  gap: 6px;
+  padding-left: 16px;
+  margin: 0;
+  list-style: disc;
+}

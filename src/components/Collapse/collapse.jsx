@@ -4,8 +4,18 @@ import styles from './collapse.module.css'
 
 export default function Collapse({ title, content, variant }) {
   const [open, setOpen] = useState(false)
-  const collapseClassName =
-    variant === 'detail' ? styles.detailVariant : styles.aboutVariant
+  const collapseClassName = (() => {
+    switch (variant) {
+      case 'about':
+        return styles.aboutVariant
+      case 'description':
+        return styles.descriptionVariant
+      case 'equipment':
+        return styles.equipmentVariant
+      default:
+        return ''
+    }
+  })()
 
   return (
     <div className={collapseClassName}>

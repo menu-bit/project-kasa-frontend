@@ -3,7 +3,7 @@ import Error from './components/Error/error'
 import Footer from './components/Footer/footer'
 import Header from './components/Header/header'
 import About from './pages/About/about'
-import Detail from './pages/Detail/detail'
+import Property from './pages/Property/property'
 import Home from './pages/Home/home'
 
 export default function App() {
@@ -15,7 +15,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
-          <Route path="/detail/*" element={<Detail />} />
+          <Route path="/property/*" element={<Property />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </main>

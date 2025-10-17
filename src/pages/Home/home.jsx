@@ -3,6 +3,7 @@ import bannerHome from '../../assets/bannerHomeImg.png'
 import { Banner } from '../../components/Banner/banner'
 import Card from '../../components/Card/card'
 import styles from './home.module.css'
+import Error from '../../components/Error/error'
 //useState: lets you store state (data that changes) inside your component
 //useEffect: lets you run side effects (like fetching data) when the component loads
 

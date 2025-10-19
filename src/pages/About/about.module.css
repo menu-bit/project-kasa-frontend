@@ -1,2 +1,24 @@
-.CollapseSection {
+.about {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto; /* centers the section horizontally */
+  background-color: #fff;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
+.collapsesAbout {
+  width: 70%;
+  max-width: 1220px; /* <- change this to 700/900/1200 as you prefer */
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .collapsesAbout {
+    max-width: 100%;
+    margin: 0.5rem 0;
+  }
 }

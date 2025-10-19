@@ -1,26 +1,44 @@
-.bannerHome {
+/* === Shared base styles === */
+.bannerHome,
+.bannerAbout {
   position: relative;
-  margin-left: 100px;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  margin-right: 0px;
-  width: 1240px;
+  width: 100%;
+  max-width: 1240px;
   height: 223px;
+  margin: 40px auto;
   border-radius: 25px;
-  border: rgba(0, 0, 0, 1);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
   overflow: hidden;
 }
 
-.bannerAbout {
-  margin-left: 100px;
-  margin-bottom: 40px;
-  margin-top: 40px;
-  margin-right: 0px;
-  width: 1240px;
+/* image fills container */
+.bannerHome img,
+.bannerAbout img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
   border-radius: 25px;
 }
 
+/* === Variant: Home (darker overlay + box shadow) === */
+.bannerHome {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* only home banner */
+}
+
+.bannerHome::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+  z-index: 1;
+}
+
+/* === Variant: About (normal brightness, no shadow) === */
+.bannerAbout img {
+  filter: brightness(1);
+}
+
+/* overlay text */
 .overlayText {
   position: absolute;
   top: 50%; /* centrer verticalement */
@@ -30,6 +48,16 @@
   font-size: 40px;
   font-weight: 700;
 }
-.bannerHome img {
-  filter: brightness(0.5);
+
+@media (max-width: 768px) {
+  .bannerHome,
+  .bannerAbout {
+    height: 150px;
+    margin: 20px auto;
+    border-radius: 15px;
+  }
+
+  .overlayText {
+    font-size: 24px;
+  }
 }

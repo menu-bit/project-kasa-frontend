@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import bannerHome from '../../assets/bannerHomeImg.png'
 import { Banner } from '../../components/Banner/banner'
 import Card from '../../components/Card/card'
@@ -9,6 +10,7 @@ import Error from '../../components/Error/error'
 
 export default function Home() {
   const [accomodations, setAccomodations] = useState([])
+  const navigate = useNavigate() // <--- initialize navigate
   //accomodations: holds the list of accommodations (initially an empty array)
   //setAccomodations: function to update that state
 
@@ -17,20 +19,25 @@ export default function Home() {
     fetch('http://localhost:8080/api/properties')
       .then((reponse) => reponse.json()) //Converts the response to JSON
       .then((data) => setAccomodations(data)) //Updates state with the data → re-renders component with accommodations filled in
-      .catch((error) => console.log(error))
-  }, []) //([] dependency array ensures it runs only once)
+      .catch((error) => {
+        console.log(error)
+        navigate('/error')
+      })
+  }, [navigate])
 
   return (
     <main>
       <Banner
         imageSrc={bannerHome}
         text="Chez vous, partout et ailleurs"
-        variant="home"
+        alt="banner"
+        variant="bannerHome"
       />
       <section className={styles.cardsSection}>
         <div className={styles.cardsWrapper}>
           {accomodations.map((accomodation) => (
             <Card
+              key={accomodation.id}
               id={accomodation.id}
               title={accomodation.title}
               cover={accomodation.cover}

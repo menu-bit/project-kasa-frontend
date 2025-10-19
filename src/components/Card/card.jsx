@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom'
 import styles from './card.module.css'
 
-export default function Card({ id, title, tags }) {
+export default function Card({ id, title }) {
   const navigate = useNavigate()
 
   const handleClick = () => {

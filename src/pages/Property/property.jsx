@@ -31,7 +31,10 @@ export default function Property() {
     fetch(`http://localhost:8080/api/properties/${id}`)
       .then((response) => response.json())
       .then((data) => setAccommodation(data))
-      .catch((error) => console.error(error))
+      .catch((error) => {
+        console.error('Fetch error:', error)
+        navigate('/error')
+      })
   }, [id, navigate])
 
   const prevImage = () => {
@@ -109,14 +112,19 @@ export default function Property() {
           <Collapse
             title="Description"
             content={accommodation.description}
-            variant="description"
+            className={styles.collapsesProperty}
           />
           <Collapse
             title="Équipement"
-            content={accommodation.equipments.join(', ')}
-            variant="equipment"
-            className={styles.collapseEquipemnt}
-          ></Collapse>
+            content={
+              <dl>
+                {accommodation.equipments.map((equipment, index) => (
+                  <dt key={index}>{equipment}</dt>
+                ))}
+              </dl>
+            }
+            className={styles.collapsesProperty}
+          />
         </div>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import bannerAbout from '../../assets/bannerAboutImg.png'
 import { Banner } from '../../components/Banner/banner'
 import Collapse from '../../components/Collapse/collapse'
+import styles from './about.module.css'
 
 export default function About() {
   const collapsibles = [
@@ -26,17 +27,17 @@ export default function About() {
     },
   ]
   return (
-    <main>
-      <Banner imageSrc={bannerAbout} variant="about" />
+    <div className={styles.about}>
+      <Banner imageSrc={bannerAbout} alt="banner" variant="bannerAbout" />
       {collapsibles.map((item, index) => (
         <Collapse
           key={index}
           title={item.title}
           content={item.content}
-          variant="about"
+          className={styles.collapsesAbout}
         />
       ))}
-    </main>
+    </div>
   )
 }
 {

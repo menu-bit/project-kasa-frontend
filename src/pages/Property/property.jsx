@@ -54,11 +54,18 @@ export default function Property() {
   return (
     <div className={styles.property}>
       <div className={styles.propertySlide}>
-        <img
-          src={accommodation.pictures[currentIndex]}
-          alt={`${accommodation.title} slide`}
-          className={styles.propertyImage}
-        />
+        {/* Property images */}
+        {accommodation.pictures[currentIndex] ? (
+          <img
+            src={accommodation.pictures[currentIndex]}
+            alt={`${accommodation.title} slide`}
+            className={styles.propertyImage}
+          />
+        ) : (
+          <div className={styles.propertyImagePlaceholder}>
+            Image not available
+          </div>
+        )}
         {accommodation.pictures.length > 1 && (
           <>
             <FaChevronLeft onClick={prevImage} className={styles.arrowLeft} />
@@ -80,7 +87,12 @@ export default function Property() {
           <div className={styles.hostContainer}>
             <div className={styles.hostName}>{accommodation.host.name}</div>
             <div className={styles.hostPicture}>
-              <img src={accommodation.host.picture} alt="Owner" />
+              {/* Host picture */}
+              {accommodation.host.picture ? (
+                <img src={accommodation.host.picture} alt="Owner" />
+              ) : (
+                <div className={styles.hostPicturePlaceholder}>No Image</div>
+              )}
             </div>
           </div>
         </div>

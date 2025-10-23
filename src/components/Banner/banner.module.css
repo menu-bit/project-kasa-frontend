@@ -47,17 +47,31 @@
   color: white;
   font-size: 40px;
   font-weight: 700;
+  padding: 0 10px; /* padding pour éviter coupure sur petits écrans */
 }
 
-@media (max-width: 768px) {
+/* ===== Responsive ===== */
+
+/* Mobile */
+@media (max-width: 600px) {
   .bannerHome,
   .bannerAbout {
-    height: 150px;
+    height: 111px;
     margin: 20px auto;
-    border-radius: 15px;
+    border-radius: 10px;
   }
 
   .overlayText {
     font-size: 24px;
+  }
+
+  .bannerHome img {
+    border-radius: 10px;
+  }
+
+  .bannerAbout img {
+    filter: brightness(1);
+    margin: 0, 20px, 0, 20px;
+    border-radius: 10px;
   }
 }

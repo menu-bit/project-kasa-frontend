@@ -30,3 +30,7 @@
   font-weight: 500;
   line-height: 143%;
 }
+
+/* Responsive */
+@media (min-width: 575px) {
+}

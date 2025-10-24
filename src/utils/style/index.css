@@ -22,18 +22,6 @@ html body {
 
 main {
   flex: 1;
-  max-width: 1440;
+  max-width: 1440px;
   width: 100%;
-}
-
-@media (max-width: 600px) {
-  body {
-    flex-direction: column;
-
-    background-color: white;
-  }
-
-  main {
-    width: 100%;
-  }
 }

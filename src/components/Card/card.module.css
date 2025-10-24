@@ -1,11 +1,9 @@
 .card {
-  padding: 15px;
   width: 340px;
   height: 340px;
   color: white;
-  background-color: rgb(214, 63, 63);
+  background: linear-gradient(to bottom, rgb(214, 63, 63), rgb(211, 91, 91));
   border-radius: 10px;
-  margin: 10px;
   text-align: left;
   display: flex; /* use flexbox inside the card */
   flex-direction: column;
@@ -28,8 +26,33 @@
   font-size: 1.2rem;
   font-weight: 700;
   padding-top: 300px;
+  padding-left: 20px;
 }
 
 .cardDescription {
   font-size: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 575px) {
+  .card {
+    width: 100%; /* prend toute la largeur possible */
+    max-width: auto;
+    height: 255px;
+    margin: 0px; /* centrer horizontalement avec marge */
+    padding: 0px;
+  }
+
+  .card img {
+    height: 150px;
+  }
+
+  .cardTitle {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
+  .cardDescription {
+    font-size: 0.9rem;
+  }
 }

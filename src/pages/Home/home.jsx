@@ -26,35 +26,33 @@ export default function Home() {
   }, [navigate])
 
   return (
-    <main>
-      <div className={styles.home}>
-        <Banner
-          imageSrc={bannerHome}
-          text="Chez vous, partout et ailleurs"
-          alt="banner"
-          variant="bannerHome"
-        />
-        <section className={styles.cardsSection}>
-          <div className={styles.cardsWrapper}>
-            {accomodations.map((accomodation) => (
-              <Card
-                key={accomodation.id}
-                id={accomodation.id}
-                title={accomodation.title}
-                cover={accomodation.cover}
-                pictures={accomodation.pictures}
-                description={accomodation.description}
-                location={accomodation.location}
-                host={accomodation.host}
-                picture={accomodation.picture}
-                rating={accomodation.rating}
-                equipments={accomodation.equipments}
-                tags={accomodation.tags}
-              />
-            ))}
-          </div>
-        </section>
-      </div>
-    </main>
+    <div className={styles.home}>
+      <Banner
+        imageSrc={bannerHome}
+        text="Chez vous, partout et ailleurs"
+        alt="banner"
+        variant="bannerHome"
+      />
+      <section className={styles.cardsSection}>
+        <div className={styles.cardsWrapper}>
+          {accomodations.map((accomodation) => (
+            <Card
+              key={accomodation.id}
+              id={accomodation.id}
+              title={accomodation.title}
+              cover={accomodation.cover}
+              pictures={accomodation.pictures}
+              description={accomodation.description}
+              location={accomodation.location}
+              host={accomodation.host}
+              picture={accomodation.picture}
+              rating={accomodation.rating}
+              equipments={accomodation.equipments}
+              tags={accomodation.tags}
+            />
+          ))}
+        </div>
+      </section>
+    </div>
   )
 }

@@ -2,13 +2,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2rem 5%;
+
   background-color: #fff;
   max-width: 1240px;
   width: 100%;
   height: 4.25rem; /* 68px */
   margin: 40px auto 0;
   box-sizing: border-box;
+}
+
+.logo img {
+  max-width: 210px; /* largeur max sur desktop */
+  height: auto;
+  width: 20vw; /* largeur relative à la taille du viewport */
+  min-width: 80px;
 }
 
 .nav a {
@@ -23,11 +30,14 @@
   border-bottom: 1.5px solid rgba(0, 0, 0, 1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 575px) {
   .header {
-    width: 100%;
-    margin-right: 10px;
-    padding-top: 50px;
+    height: 111px;
+  }
+
+  .logo img {
+    max-width: 145px;
+    width: 30vw;
   }
 
   .nav a {
@@ -36,5 +46,6 @@
     color: rgba(0, 0, 0, 1);
     font-size: 1rem;
     font-weight: 600;
+    text-transform: uppercase;
   }
 }

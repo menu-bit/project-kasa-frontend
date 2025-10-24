@@ -27,19 +27,17 @@ export default function About() {
     },
   ]
   return (
-    <main>
-      <div className={styles.about}>
-        <Banner imageSrc={bannerAbout} alt="banner" variant="bannerAbout" />
-        {collapsibles.map((item, index) => (
-          <Collapse
-            key={index}
-            title={item.title}
-            content={item.content}
-            className={styles.collapsesAbout}
-          />
-        ))}
-      </div>
-    </main>
+    <div className={styles.about}>
+      <Banner imageSrc={bannerAbout} alt="banner" variant="bannerAbout" />
+      {collapsibles.map((item, index) => (
+        <Collapse
+          key={index}
+          title={item.title}
+          content={item.content}
+          className={styles.collapsesAbout}
+        />
+      ))}
+    </div>
   )
 }
 {

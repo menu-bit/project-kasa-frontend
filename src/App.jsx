@@ -8,7 +8,7 @@ import Home from './pages/Home/home'
 
 export default function App() {
   return (
-    <div>
+    <>
       <Header /> {/* This shows the header on every page */}
       <main>
         {/* Routes */}
@@ -20,6 +20,6 @@ export default function App() {
         </Routes>
       </main>
       <Footer /> {/* This shows the footer on every page */}
-    </div>
+    </>
   )
 }

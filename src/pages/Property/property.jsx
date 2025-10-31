@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { FaChevronLeft, FaChevronRight, FaStar } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Collapse from '../../components/Collapse/collapse'
@@ -15,12 +15,16 @@ export default function Property() {
     tags: [],
     rating: 0,
     host: { name: '', picture: '' },
-  }) //initialize accommodation with a default structure,Prevents runtime errors from accessing properties of null
+  })
 
   const location = useLocation()
   const navigate = useNavigate()
   const queryParams = new URLSearchParams(location.search)
   const id = queryParams.get('id')
+
+  // double-layer refs
+  const imgRefs = [useRef(null), useRef(null)]
+  const [activeLayer, setActiveLayer] = useState(0) // which ref is visible (0 or 1)
 
   useEffect(() => {
     if (!id) {
@@ -38,41 +42,127 @@ export default function Property() {
         return response.json()
       })
       .then((data) => setAccommodation(data))
+      .catch((error) => {
+        console.error('Fetch error:', error)
+        try {
+          navigate('/error')
+        } catch {
+          // ignore
+        }
+      })
   }, [id, navigate])
 
+  // initialize image layers when pictures list changes
+  useEffect(() => {
+    const pics = accommodation.pictures || []
+    if (pics.length === 0) return
+
+    // set top layer to currentIndex (or 0)
+    const idx = currentIndex >= pics.length ? 0 : currentIndex
+    const other = 1 - activeLayer
+    if (imgRefs[activeLayer].current) imgRefs[activeLayer].current.src = pics[idx]
+    if (imgRefs[other].current) imgRefs[other].current.src = ''
+  }, [accommodation.pictures])
+
+  // Preload adjacent images (keeps caching) - keep for safety
+  useEffect(() => {
+    const pics = accommodation.pictures || []
+    if (pics.length === 0) return
+
+    const toPreload = []
+    const cur = pics[currentIndex]
+    const prev = pics[(currentIndex - 1 + pics.length) % pics.length]
+    const next = pics[(currentIndex + 1) % pics.length]
+
+    if (cur) toPreload.push(cur)
+    if (prev) toPreload.push(prev)
+    if (next) toPreload.push(next)
+
+    const images = toPreload.map((src) => {
+      const img = new Image()
+      img.src = src
+      return img
+    })
+
+    return () => images.forEach((img) => (img.src = ''))
+  }, [accommodation.pictures, currentIndex])
+
+  const switchToIndex = (newIndex) => {
+    const pics = accommodation.pictures || []
+    if (pics.length <= 1) return
+    newIndex = (newIndex + pics.length) % pics.length
+
+    const other = 1 - activeLayer
+    const nextSrc = pics[newIndex]
+
+    const otherImg = imgRefs[other].current
+    const activeImg = imgRefs[activeLayer].current
+    if (!otherImg || !activeImg) return
+
+    // set the other image src (should be cached if preloaded)
+    otherImg.src = nextSrc
+
+    const swap = () => {
+      setActiveLayer(other)
+      setCurrentIndex(newIndex)
+    }
+
+    // if already loaded, swap immediately with a tiny timeout to allow CSS transition
+    if (otherImg.complete) {
+      // allow browser to register the src change
+      requestAnimationFrame(() => {
+        // trigger opacity transition by toggling activeLayer
+        swap()
+      })
+    } else {
+      // wait for onload
+      const onLoad = () => {
+        otherImg.removeEventListener('load', onLoad)
+        requestAnimationFrame(() => swap())
+      }
+      otherImg.addEventListener('load', onLoad)
+    }
+  }
+
   const prevImage = () => {
-    if (accommodation.pictures.length <= 1) return
-    setCurrentIndex((i) =>
-      i === 0 ? accommodation.pictures.length - 1 : i - 1
-    )
+    const pics = accommodation.pictures || []
+    if (pics.length <= 1) return
+    switchToIndex((currentIndex - 1 + pics.length) % pics.length)
   }
 
   const nextImage = () => {
-    if (accommodation.pictures.length <= 1) return
-    setCurrentIndex((i) =>
-      i === accommodation.pictures.length - 1 ? 0 : i + 1
-    )
+    const pics = accommodation.pictures || []
+    if (pics.length <= 1) return
+    switchToIndex((currentIndex + 1) % pics.length)
   }
 
   return (
     <div className={styles.property}>
       <div className={styles.propertySlide}>
-        {/* Property images */}
-        {accommodation.pictures[currentIndex] ? (
-          <img
-            src={accommodation.pictures[currentIndex]}
-            alt={`${accommodation.title} slide`}
-            className={styles.propertyImage}
-          />
-        ) : (
-          <div className={styles.propertyImagePlaceholder}>
-            Image not available
-          </div>
-        )}
+        {/* Property images - double layer for crossfade */}
+        <div className={styles.imageStack}>
+          <img ref={imgRefs[0]} className={`${styles.imgLayer} ${activeLayer === 0 ? styles.visible : ''}`} alt="" />
+          <img ref={imgRefs[1]} className={`${styles.imgLayer} ${activeLayer === 1 ? styles.visible : ''}`} alt="" />
+        </div>
+
         {accommodation.pictures.length > 1 && (
           <>
-            <FaChevronLeft onClick={prevImage} className={styles.arrowLeft} />
-            <FaChevronRight onClick={nextImage} className={styles.arrowRight} />
+            <button
+              type="button"
+              onClick={prevImage}
+              className={styles.arrowLeft}
+              aria-label="Image précédente"
+            >
+              <FaChevronLeft />
+            </button>
+            <button
+              type="button"
+              onClick={nextImage}
+              className={styles.arrowRight}
+              aria-label="Image suivante"
+            >
+              <FaChevronRight />
+            </button>
           </>
         )}
         <div className={styles.pictureCounter}>
@@ -90,7 +180,6 @@ export default function Property() {
           <div className={styles.hostContainer}>
             <div className={styles.hostName}>{accommodation.host.name}</div>
             <div className={styles.hostPicture}>
-              {/* Host picture */}
               {accommodation.host.picture ? (
                 <img src={accommodation.host.picture} alt="Owner" />
               ) : (

@@ -1,29 +1,28 @@
 import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import bannerHome from '../../assets/bannerHomeImg.png'
 import { Banner } from '../../components/Banner/banner'
 import Card from '../../components/Card/card'
 import styles from './home.module.css'
-import Error from '../../components/Error/error'
-//useState: lets you store state (data that changes) inside your component
-//useEffect: lets you run side effects (like fetching data) when the component loads
 
 export default function Home() {
   const [accomodations, setAccomodations] = useState([])
-  const navigate = useNavigate() // <--- initialize navigate
-  //accomodations: holds the list of accommodations (initially an empty array)
-  //setAccomodations: function to update that state
 
   useEffect(() => {
     //useEffect runs when the component first mounts
     fetch('http://localhost:8080/api/properties')
-      .then((reponse) => reponse.json()) //Converts the response to JSON
+      .then((reponse) => {
+        if (!reponse.ok) throw new Error(`HTTP error ${reponse.status}`)
+        return reponse.json()
+      }) //Converts the response to JSON
       .then((data) => setAccomodations(data)) //Updates state with the data → re-renders component with accommodations filled in
       .catch((error) => {
-        console.log(error)
-        navigate('/error')
+        // Log a clear French message instead of redirecting to the error page
+        console.error(
+          "Impossible de contacter le backend à 'http://localhost:8080/api/properties'. Vérifie que le serveur backend est démarré.",
+          error
+        )
       })
-  }, [navigate])
+  }, [])
 
   return (
     <div className={styles.home}>

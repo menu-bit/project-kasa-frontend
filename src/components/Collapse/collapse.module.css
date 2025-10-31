@@ -13,10 +13,22 @@
   align-items: center;
   color: rgba(255, 255, 255, 1);
   background: rgba(255, 96, 96, 1);
-  padding: 0.7rem;
+  padding: 0.7rem 1rem;
   font-weight: 700;
   font-size: 1.5rem;
-  border-radius: 5px;
+  border-radius: 5px 5px 0 0;
+
+  /* make the button occupy full width and remove native button styles */
+  width: 100%;
+  box-sizing: border-box;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.collapseHeader:focus {
+  outline: 3px solid rgba(255, 96, 96, 0.25);
+  outline-offset: 2px;
 }
 
 /* ICON */

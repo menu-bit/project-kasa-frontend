@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
-import { FaChevronLeft, FaChevronRight, FaStar } from 'react-icons/fa'
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
 import { useLocation, useNavigate } from 'react-router-dom'
 import Collapse from '../../components/Collapse/collapse'
 import styles from './property.module.css'
@@ -13,8 +13,6 @@ export default function Property() {
     description: '',
     equipments: [],
     tags: [],
-    rating: 0,
-    host: { name: '', picture: '' },
   })
 
   const location = useLocation()
@@ -22,8 +20,9 @@ export default function Property() {
   const queryParams = new URLSearchParams(location.search)
   const id = queryParams.get('id')
 
-  // double-layer refs
-  const imgRefs = [useRef(null), useRef(null)]
+  // double-layer refs (deux refs stables, évite de recréer un tableau à chaque rendu)
+  const imgRefA = useRef(null)
+  const imgRefB = useRef(null)
   const [activeLayer, setActiveLayer] = useState(0) // which ref is visible (0 or 1)
 
   useEffect(() => {
@@ -57,12 +56,16 @@ export default function Property() {
     const pics = accommodation.pictures || []
     if (pics.length === 0) return
 
-    // set top layer to currentIndex (or 0)
     const idx = currentIndex >= pics.length ? 0 : currentIndex
-    const other = 1 - activeLayer
-    if (imgRefs[activeLayer].current) imgRefs[activeLayer].current.src = pics[idx]
-    if (imgRefs[other].current) imgRefs[other].current.src = ''
-  }, [accommodation.pictures])
+    // active ref reçoit l'image, l'autre est vidé
+    if (activeLayer === 0) {
+      if (imgRefA.current) imgRefA.current.src = pics[idx]
+      if (imgRefB.current) imgRefB.current.src = ''
+    } else {
+      if (imgRefB.current) imgRefB.current.src = pics[idx]
+      if (imgRefA.current) imgRefA.current.src = ''
+    }
+  }, [accommodation.pictures, activeLayer, currentIndex])
 
   // Preload adjacent images (keeps caching) - keep for safety
   useEffect(() => {
@@ -84,7 +87,11 @@ export default function Property() {
       return img
     })
 
-    return () => images.forEach((img) => (img.src = ''))
+    return () => {
+      for (const img of images) {
+        img.src = ''
+      }
+    }
   }, [accommodation.pictures, currentIndex])
 
   const switchToIndex = (newIndex) => {
@@ -95,8 +102,8 @@ export default function Property() {
     const other = 1 - activeLayer
     const nextSrc = pics[newIndex]
 
-    const otherImg = imgRefs[other].current
-    const activeImg = imgRefs[activeLayer].current
+    const otherImg = other === 0 ? imgRefA.current : imgRefB.current
+    const activeImg = activeLayer === 0 ? imgRefA.current : imgRefB.current
     if (!otherImg || !activeImg) return
 
     // set the other image src (should be cached if preloaded)
@@ -109,13 +116,8 @@ export default function Property() {
 
     // if already loaded, swap immediately with a tiny timeout to allow CSS transition
     if (otherImg.complete) {
-      // allow browser to register the src change
-      requestAnimationFrame(() => {
-        // trigger opacity transition by toggling activeLayer
-        swap()
-      })
+      requestAnimationFrame(() => swap())
     } else {
-      // wait for onload
       const onLoad = () => {
         otherImg.removeEventListener('load', onLoad)
         requestAnimationFrame(() => swap())
@@ -139,10 +141,9 @@ export default function Property() {
   return (
     <div className={styles.property}>
       <div className={styles.propertySlide}>
-        {/* Property images - double layer for crossfade */}
         <div className={styles.imageStack}>
-          <img ref={imgRefs[0]} className={`${styles.imgLayer} ${activeLayer === 0 ? styles.visible : ''}`} alt="" />
-          <img ref={imgRefs[1]} className={`${styles.imgLayer} ${activeLayer === 1 ? styles.visible : ''}`} alt="" />
+          <img ref={imgRefA} src={accommodation.pictures[0] || ''} className={`${styles.imgLayer} ${activeLayer === 0 ? styles.visible : ''}`} alt="" />
+          <img ref={imgRefB} src={accommodation.pictures[1] || ''} className={`${styles.imgLayer} ${activeLayer === 1 ? styles.visible : ''}`} alt="" />
         </div>
 
         {accommodation.pictures.length > 1 && (
@@ -167,7 +168,7 @@ export default function Property() {
         )}
         <div className={styles.pictureCounter}>
           {currentIndex + 1} / {accommodation.pictures.length}
-        </div>{' '}
+        </div>
       </div>
       <div className={styles.propertyDetail}>
         <div className={styles.headerContainer}>
@@ -177,17 +178,8 @@ export default function Property() {
               <div className={styles.location}>{accommodation.location}</div>
             </div>
           </div>
-          <div className={styles.hostContainer}>
-            <div className={styles.hostName}>{accommodation.host.name}</div>
-            <div className={styles.hostPicture}>
-              {accommodation.host.picture ? (
-                <img src={accommodation.host.picture} alt="Owner" />
-              ) : (
-                <div className={styles.hostPicturePlaceholder}>No Image</div>
-              )}
-            </div>
-          </div>
         </div>
+
         <div className={styles.RateTagContainer}>
           <div className={styles.tagsContainer}>
             <div className={styles.tags}>
@@ -195,18 +187,6 @@ export default function Property() {
                 <span key={tag} className={styles.tag}>
                   {tag}
                 </span>
-              ))}
-            </div>
-          </div>
-          <div className={styles.ratingContainer}>
-            <div>
-              {[1, 2, 3, 4, 5].map((star) => (
-                <FaStar
-                  key={star}
-                  className={
-                    star <= accommodation.rating ? styles.filled : styles.empty
-                  }
-                />
               ))}
             </div>
           </div>

@@ -4,26 +4,45 @@
   align-items: center;
 
   background-color: #fff;
-  max-width: 1240px;
+  max-width: 77.5rem; /* 1240px -> 77.5rem */
   width: 100%;
   height: 4.25rem; /* 68px */
   margin: 2.5rem auto 0; /* 40px -> 2.5rem */
   box-sizing: border-box;
+  padding: 0 1rem; /* small horizontal padding to avoid edge clipping */
+}
+
+.logo {
+  flex: 0 0 auto; /* ne prend pas tout l'espace */
+  display: flex;
+  align-items: center;
 }
 
 .logo img {
-  max-width: 210px; /* largeur max sur desktop */
+  max-width: 10rem; /* 160px maximum pour éviter qu'il pousse tout */
   height: auto;
-  width: 20vw; /* largeur relative à la taille du viewport */
-  min-width: 80px;
+  width: auto;
+  display: block;
+}
+
+/* NAV */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem; /* espace entre liens */
+  justify-content: flex-end;
+  flex: 1 1 auto; /* nav peut grandir et shrink */
+  min-width: 0; /* permet au flex-item de shrink correctement */
 }
 
 .nav a {
-  margin-left: 3rem;
   text-decoration: none;
   color: rgba(0, 0, 0, 1);
   font-size: 1.5rem;
   font-weight: 600;
+  white-space: nowrap; /* conserve le texte du lien sur une seule ligne */
+  overflow: hidden;
+  text-overflow: ellipsis; /* si vraiment manque de place */
 }
 
 .active {
@@ -35,15 +54,18 @@
   .header {
     height: 4rem; /* 64px */
     margin: 1.875rem auto 0; /* 30px -> 1.875rem */
+    padding: 0 1.25rem;
   }
 
   .logo img {
-    max-width: 180px;
-    width: 18vw;
+    max-width: 9rem; /* 144px */
+  }
+
+  .nav {
+    gap: 1rem;
   }
 
   .nav a {
-    margin-left: 2rem;
     font-size: 1.2rem;
   }
 }
@@ -58,14 +80,15 @@
   }
 
   .logo img {
-    max-width: 145px;
-    width: 30vw;
+    max-width: 8rem; /* 128px */
+  }
+
+  .nav {
+    gap: 0.75rem;
+    justify-content: flex-end;
   }
 
   .nav a {
-    margin-left: 1rem;
-    text-decoration: none;
-    color: rgba(0, 0, 0, 1);
     font-size: 1rem;
     font-weight: 600;
     text-transform: uppercase;

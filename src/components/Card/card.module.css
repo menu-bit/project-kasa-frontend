@@ -2,35 +2,91 @@
   width: 21.25rem; /* 340px -> 21.25rem */
   height: 21.25rem; /* 340px */
   color: white;
-  background: linear-gradient(to bottom, rgb(214, 63, 63), rgb(211, 91, 91));
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border: none;
+  background: linear-gradient(to bottom, var(--color-primary-strong), var(--color-primary));
   border-radius: 0.625rem; /* 10px */
   text-align: left;
-  display: flex; /* use flexbox inside the card */
-  flex-direction: column;
-  justify-content: end; /* center content vertically */
-  align-items: flex-start; /* center content horizontally */
+  display: block;
   cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  padding: 0;
 }
 
-.card img {
-  width: 100%;
-  height: 12.5rem; /* 200px -> 12.5rem */
-  object-fit: cover;
+.card:focus {
+  outline: 0.25rem solid rgba(255,96,96,0.25);
+  outline-offset: 0.25rem;
+}
+
+/* cardImage is now a background holder; inline style sets backgroundImage with fallback */
+.cardImage {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* ensure it sits behind content */
+  z-index: 0;
 }
 
 .cardContent {
-  padding: 1rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: var(--space-md);
+  background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
+  box-sizing: border-box;
+  z-index: 2;
 }
 
 .cardTitle {
   font-size: 1.2rem;
-  font-weight: 700;
-  padding-top: 18.75rem; /* 300px -> 18.75rem */
-  padding-left: 1.25rem; /* 20px */
+  font-weight: var(--font-weight-bold);
+  margin: 0 0 0.25rem 0;
+  color: #fff;
 }
 
-.cardDescription {
-  font-size: 1rem;
+.meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.host {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.rating {
+  display: inline-block;
+  position: relative;
+  font-size: 0.95rem;
+  color: #e3e3e3; /* base color for empty stars */
+  line-height: 1;
+}
+
+.rating .stars {
+  display: inline-block;
+  position: relative;
+  z-index: 1;
+  /* ensure star glyphs are visible */
+}
+
+/* overlay that fills stars according to --rating */
+.rating::before {
+  content: '★★★★★';
+  position: absolute;
+  left: 0;
+  top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  color: var(--color-primary);
+  width: calc((var(--rating, 0) / 5) * 100%);
 }
 
 /* Tablet: 769px to 1024px */
@@ -61,8 +117,8 @@
     width: 100%; /* prend toute la largeur possible */
     max-width: none;
     height: 15.9375rem; /* 255px -> 15.9375rem */
-    margin: 0px; /* centrer horizontalement avec marge */
-    padding: 0px;
+    margin: 0; /* centrer horizontalement avec marge */
+    padding: 0;
   }
 
   .card img {

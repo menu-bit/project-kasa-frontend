@@ -37,17 +37,7 @@ export default function Home() {
           {accomodations.map((accomodation) => (
             <Card
               key={accomodation.id}
-              id={accomodation.id}
-              title={accomodation.title}
-              cover={accomodation.cover}
-              pictures={accomodation.pictures}
-              description={accomodation.description}
-              location={accomodation.location}
-              host={accomodation.host}
-              picture={accomodation.picture}
-              rating={accomodation.rating}
-              equipments={accomodation.equipments}
-              tags={accomodation.tags}
+              accommodation={accomodation}
             />
           ))}
         </div>

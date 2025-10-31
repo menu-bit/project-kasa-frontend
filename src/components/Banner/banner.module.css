@@ -3,10 +3,10 @@
 .bannerAbout {
   position: relative;
   width: 100%;
-  max-width: 1240px;
-  height: 223px;
-  margin: 40px auto;
-  border-radius: 25px;
+  max-width: 77.5rem; /* 1240px -> 77.5rem */
+  height: 13.9375rem; /* 223px -> 13.9375rem */
+  margin: 2.5rem auto; /* 40px -> 2.5rem */
+  border-radius: 1.5625rem; /* 25px -> 1.5625rem */
   overflow: hidden;
 }
 
@@ -17,12 +17,12 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 25px;
+  border-radius: 1.5625rem; /* 25px */
 }
 
 /* === Variant: Home (darker overlay + box shadow) === */
 .bannerHome {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25); /* only home banner */
+  box-shadow: 0 0.25rem 0.625rem rgba(0, 0, 0, 0.25); /* 4px 10px -> rem */
 }
 
 .bannerHome::after {
@@ -44,40 +44,76 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  text-shadow: -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black,
-    1px 1px 0 black;
-  font-size: 48px;
+  text-shadow: -0.0625rem -0.0625rem 0 black, 0.0625rem -0.0625rem 0 black, -0.0625rem 0.0625rem 0 black,
+    0.0625rem 0.0625rem 0 black; /* 1px -> 0.0625rem */
+  font-size: 3rem; /* 48px -> 3rem */
   font-weight: 700;
-  padding: 0 10px;
+  padding: 0 0.625rem; /* 10px */
   z-index: 2; /* couche au-dessus */
   white-space: nowrap;
 }
 
 /* ===== Responsive ===== */
 
-/* Mobile */
-@media (max-width: 600px) {
+/* Mobile: up to 768px */
+@media (max-width: 768px) {
   .bannerHome,
   .bannerAbout {
-    height: 111px;
-    margin: 20px auto;
-    border-radius: 10px;
+    height: 8.75rem; /* 140px -> 8.75rem */
+    margin: 1.25rem auto; /* 20px -> 1.25rem */
+    border-radius: 0.75rem; /* 12px -> 0.75rem */
   }
 
   .overlayText {
     white-space: normal;
-    width: 80%; /* une largeur adaptée pour forcer le retour à la ligne */
+    width: 85%; /* une largeur adaptée pour forcer le retour à la ligne */
     text-align: left;
-    font-size: 5vw;
+    font-size: 5.5vw;
   }
 
-  .bannerHome img {
-    border-radius: 10px;
+  .bannerHome img,
+  .bannerAbout img {
+    border-radius: 0.75rem;
   }
 
   .bannerAbout img {
     filter: brightness(1);
-    margin: 0, 20px, 0, 20px;
-    border-radius: 10px;
+    margin: 0 1.25rem; /* 20px -> 1.25rem */
+  }
+}
+
+/* Tablet: 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .bannerHome,
+  .bannerAbout {
+    height: 11.25rem; /* 180px -> 11.25rem */
+    margin: 1.875rem auto; /* 30px -> 1.875rem */
+    border-radius: 1.125rem; /* 18px -> 1.125rem */
+  }
+
+  .overlayText {
+    font-size: 3.4vw;
+    white-space: nowrap;
+    width: auto;
+  }
+
+  .bannerHome img,
+  .bannerAbout img {
+    border-radius: 1.125rem;
+  }
+}
+
+/* Desktop: 1025px and up (base styles already apply, but normalize if needed) */
+@media (min-width: 1025px) {
+  .bannerHome,
+  .bannerAbout {
+    height: 13.9375rem; /* 223px */
+    margin: 2.5rem auto; /* 40px */
+    border-radius: 1.5625rem;
+  }
+
+  .overlayText {
+    font-size: 3rem;
+    white-space: nowrap;
   }
 }

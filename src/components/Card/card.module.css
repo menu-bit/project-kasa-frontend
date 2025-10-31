@@ -1,9 +1,9 @@
 .card {
-  width: 340px;
-  height: 340px;
+  width: 21.25rem; /* 340px -> 21.25rem */
+  height: 21.25rem; /* 340px */
   color: white;
   background: linear-gradient(to bottom, rgb(214, 63, 63), rgb(211, 91, 91));
-  border-radius: 10px;
+  border-radius: 0.625rem; /* 10px */
   text-align: left;
   display: flex; /* use flexbox inside the card */
   flex-direction: column;
@@ -14,7 +14,7 @@
 
 .card img {
   width: 100%;
-  height: 200px;
+  height: 12.5rem; /* 200px -> 12.5rem */
   object-fit: cover;
 }
 
@@ -25,30 +25,53 @@
 .cardTitle {
   font-size: 1.2rem;
   font-weight: 700;
-  padding-top: 300px;
-  padding-left: 20px;
+  padding-top: 18.75rem; /* 300px -> 18.75rem */
+  padding-left: 1.25rem; /* 20px */
 }
 
 .cardDescription {
   font-size: 1rem;
 }
 
-/* Responsive */
-@media (max-width: 575px) {
+/* Tablet: 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .card {
+    width: 18.75rem; /* 300px */
+    height: 18.75rem; /* 300px */
+  }
+
+  .card img {
+    height: 11.25rem; /* 180px */
+  }
+
+  .cardTitle {
+    font-size: 1.1rem;
+    padding-top: 16.25rem; /* 260px */
+    padding-left: 1rem; /* 16px */
+  }
+
+  .cardDescription {
+    font-size: 0.95rem;
+  }
+}
+
+/* Mobile: up to 768px */
+@media (max-width: 768px) {
   .card {
     width: 100%; /* prend toute la largeur possible */
-    max-width: auto;
-    height: 255px;
+    max-width: none;
+    height: 15.9375rem; /* 255px -> 15.9375rem */
     margin: 0px; /* centrer horizontalement avec marge */
     padding: 0px;
   }
 
   .card img {
-    height: 150px;
+    height: 9.375rem; /* 150px -> 9.375rem */
   }
 
   .cardTitle {
     font-size: 1rem;
+    padding-top: 10.625rem; /* 170px -> 10.625rem */
     padding-left: 1rem;
   }
 

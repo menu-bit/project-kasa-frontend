@@ -1,6 +1,6 @@
 .about {
-  max-width: 1440px;
-  margin: 0 100px 20px 100px;
+  max-width: 90rem; /* 1440px -> 90rem */
+  margin: 0 6.25rem 1.25rem 6.25rem; /* 100px -> 6.25rem ; 20px -> 1.25rem */
   background-color: #fff;
   height: auto;
   display: flex;
@@ -10,16 +10,29 @@
 
 .collapsesAbout {
   width: 85%;
-  max-width: 1220px;
+  max-width: 76.25rem; /* 1220px -> 76.25rem */
 }
 
-/* Responsive */
-@media (max-width: 575px) {
+/* Tablet: 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .about {
+    margin: 0 2.5rem 1.25rem 2.5rem; /* 40px -> 2.5rem */
+  }
+
+  .collapsesAbout {
+    width: 90%;
+    max-width: 62.5rem; /* 1000px -> 62.5rem */
+  }
+}
+
+/* Mobile: up to 768px */
+@media (max-width: 768px) {
   .about {
     margin: 0 5% 0 5%;
   }
 
   .collapsesAbout {
-    width: auto;
+    width: 100%;
+    padding: 0 0.375rem; /* 6px -> 0.375rem */
   }
 }

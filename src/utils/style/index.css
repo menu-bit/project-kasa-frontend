@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
+html {
+  /* base font-size : 16px -> 1rem = 16px */
+  font-size: 16px;
+}
+
 body,
 #root {
   height: 100%;
@@ -22,6 +27,6 @@ html body {
 
 main {
   flex: 1;
-  max-width: 1440px;
+  max-width: 90rem; /* 1440px -> 90rem */
   width: 100%;
 }

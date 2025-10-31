@@ -1,5 +1,5 @@
 .collapseContainer {
-  border-radius: 8px;
+  border-radius: 0.5rem; /* 8px -> 0.5rem */
   overflow: hidden;
   background-color: #f6f6f6;
   margin: 1rem 0;
@@ -16,7 +16,7 @@
   padding: 0.7rem 1rem;
   font-weight: 700;
   font-size: 1.5rem;
-  border-radius: 5px 5px 0 0;
+  border-radius: 0.3125rem 0.3125rem 0 0; /* 5px -> 0.3125rem */
 
   /* make the button occupy full width and remove native button styles */
   width: 100%;
@@ -27,8 +27,8 @@
 }
 
 .collapseHeader:focus {
-  outline: 3px solid rgba(255, 96, 96, 0.25);
-  outline-offset: 2px;
+  outline: 0.1875rem solid rgba(255, 96, 96, 0.25); /* 3px -> 0.1875rem */
+  outline-offset: 0.125rem; /* 2px -> 0.125rem */
 }
 
 /* ICON */
@@ -47,31 +47,44 @@
   transition: max-height 0.4s ease;
   background: #fafafa;
   color: black;
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 0.625rem; /* 10px */
+  border-bottom-right-radius: 0.625rem; /* 10px */
 }
 
 .collapseContent.open {
-  max-height: 500px; /* big enough to fit your text */
+  max-height: 31.25rem; /* 500px -> 31.25rem */
 }
 
 .innerContent {
-  border-radius: 5px;
+  border-radius: 0.3125rem; /* 5px */
   padding: 1rem;
   color: #333;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* RESPONSIVE */
-@media (max-width: 575px) {
+/* Tablet: 769px to 1024px */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .collapseHeader {
+    font-size: 1.25rem;
+    padding: 0.7rem 1rem;
+  }
+
+  .innerContent {
+    font-size: 0.98rem;
+    padding: 0.9rem 1rem;
+  }
+}
+
+/* Mobile: up to 768px */
+@media (max-width: 768px) {
   .collapseHeader {
     font-size: 1rem;
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 0.8rem;
   }
 
   .innerContent {
     font-size: 0.95rem;
-    padding: 0.8rem 1rem;
+    padding: 0.7rem 0.9rem;
   }
 }

@@ -29,12 +29,15 @@ export default function Property() {
     }
 
     fetch(`http://localhost:8080/api/properties/${id}`)
-      .then((response) => response.json())
-      .then((data) => setAccommodation(data))
-      .catch((error) => {
-        console.error('Fetch error:', error)
-        navigate('/error')
+      .then((response) => {
+        if (!response.ok) {
+          console.error(`Requête vers le backend a échoué, status: ${response.status}`)
+          navigate('/error')
+          throw new Error(`HTTP error ${response.status}`)
+        }
+        return response.json()
       })
+      .then((data) => setAccommodation(data))
   }, [id, navigate])
 
   const prevImage = () => {
@@ -131,7 +134,7 @@ export default function Property() {
             content={
               <dl>
                 {accommodation.equipments.map((equipment, index) => (
-                  <dt key={index}>{equipment}</dt>
+                  <dt key={`${equipment}-${index}`}>{equipment}</dt>
                 ))}
               </dl>
             }

@@ -35,20 +35,6 @@ export default function Card({ accommodation }) {
 
       <div className={styles.cardContent}>
         <h3 className={styles.cardTitle}>{accommodation?.title}</h3>
-
-        <div
-          className={styles.meta}
-          style={{ '--rating': accommodation?.rating ?? 0 }}
-        >
-          <span className={styles.host}>{accommodation?.host?.name}</span>
-          <span
-            className={styles.rating}
-            aria-label={`Note ${accommodation?.rating || 0} sur 5`}
-          >
-            {/* CSS will render stars and fill according to --rating */}
-            <span className={styles.stars}>★★★★★</span>
-          </span>
-        </div>
       </div>
     </button>
   )
@@ -59,10 +45,5 @@ Card.propTypes = {
     id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
     title: PropTypes.string,
     cover: PropTypes.string,
-    host: PropTypes.shape({
-      name: PropTypes.string,
-      picture: PropTypes.string,
-    }),
-    rating: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   }),
 }
